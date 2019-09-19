@@ -2,7 +2,7 @@ package chapter1.chapter1_1;
 
 import edu.princeton.cs.algs4.StdIn;
 
-public class Ex22 {
+public class Ex23 {
   public static int rank(int key, int[] a) {
     return rank(key, a, 0, a.length - 1);
   }

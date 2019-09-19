@@ -14,7 +14,7 @@ public class BinarySearch {
   private BinarySearch() {
   }
 
-  public static int indexOf(int key, int[] a) {
+  private static int indexOf(int[] a, int key) {
     int lo = 0;
     int hi = a.length - 1;
     while (lo <= hi) {
@@ -41,7 +41,7 @@ public class BinarySearch {
     // read integer key from standard input; print if not in whitelist
     while (!StdIn.isEmpty()) {
       int key = StdIn.readInt();
-      if (BinarySearch.indexOf(key, whitelist) == -1) {
+      if (BinarySearch.indexOf(whitelist, key) == -1) {
         StdOut.println(key);
       }
     }

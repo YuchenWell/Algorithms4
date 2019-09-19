@@ -6,7 +6,7 @@ public class Ex27 {
 
   private static double[][] MATRIX;
 
-  public static double binomial(int N, int k, double p) {
+  private static double binomial(int N, int k, double p) {
     // 调用次数+1
     COUNT++;
 
@@ -19,7 +19,7 @@ public class Ex27 {
     return (1.0 - p) * binomial(N - 1, k, p) + p * binomial(N - 1, k - 1, p);
   }
 
-  public static double betterBinomial(int N, int k, double p) {
+  private static double betterBinomial(int N, int k, double p) {
     MATRIX = new double[N + 1][k + 1];
     for (int i = 0; i <= N; i++) {
       for (int j = 0; j <= k; j++) {
@@ -29,7 +29,7 @@ public class Ex27 {
     return bin(N, k, p);
   }
 
-  public static double bin(int N, int k, double p) {
+  private static double bin(int N, int k, double p) {
     // 调用次数+1
     COUNT_BETTER++;
 

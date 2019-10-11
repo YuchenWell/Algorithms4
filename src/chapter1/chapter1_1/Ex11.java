@@ -1,7 +1,7 @@
 package chapter1.chapter1_1;
 
 public class Ex11 {
-  public static void printBooleanMatrix(boolean[][] matrix) {
+  private static void printBooleanMatrix(boolean[][] matrix) {
     // 第一行： 列序号
     System.out.print(' ');
     for (int i = 0; i < matrix[0].length; i++) {
@@ -21,7 +21,7 @@ public class Ex11 {
   }
 
   public static void main(String[] args) {
-    boolean[][] a = { { true, false, true }, { false, true, false }, { true, true, false }, { true, true, false } };
+    boolean[][] a = {{true, false, true}, {false, true, false}, {true, true, false}, {true, true, false}};
     printBooleanMatrix(a);
 
   }

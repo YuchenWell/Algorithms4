@@ -23,13 +23,13 @@ public class Ex23 {
   }
 
   public static void main(String[] args) {
-    int[] a = { 1, 2, 3, 4, 6, 7, 8, 9, 12 };
+    int[] a = {1, 2, 3, 4, 6, 7, 8, 9, 12};
 
-    System.out.printf("+ or - ? ");
+    System.out.print("+ or - ? ");
     char arg = StdIn.readChar();
     boolean showInWhitelist = arg == '-';
 
-    System.out.printf("Input keys: ");
+    System.out.print("Input keys: ");
     StdIn.readLine();
 
     String[] keys = StdIn.readLine().split(" ");

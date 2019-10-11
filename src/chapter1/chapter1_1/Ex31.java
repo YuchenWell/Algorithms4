@@ -21,15 +21,15 @@ public class Ex31 {
   public static void main(String[] args) {
     // Enter points
     System.out.print("Points: ");
-    int N=StdIn.readInt();
-    if (N < 1 ) {
+    int N = StdIn.readInt();
+    if (N < 1) {
       System.out.println("Points count is not valid!");
       return;
     }
 
     // Enter Probability
     System.out.print("Probability:");
-    double p =StdIn.readDouble();
+    double p = StdIn.readDouble();
     if (p < 0 || p > 1) {
       System.out.println("Probability is not valid!");
       return;

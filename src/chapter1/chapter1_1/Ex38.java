@@ -19,9 +19,9 @@ public class Ex38 {
     while (lo < hi) {
       int mid = lo + (hi - lo) / 2;
       if (a[mid] > key) {
-        hi--;
+        hi = mid - 1;
       } else if (a[mid] < key) {
-        lo++;
+        lo = mid + 1;
       } else {
         return mid;
       }
@@ -38,13 +38,13 @@ public class Ex38 {
     int key = StdIn.readInt();
 
     long startTime = System.currentTimeMillis();
-    int rank1=rankBruteSearch(key, whitelist);
+    int rank1 = rankBruteSearch(key, whitelist);
     System.out.println("Brute force search retrun rank: " + rank1);
     long endTime = System.currentTimeMillis();
     System.out.println("Brute force search time: " + (endTime - startTime));
 
     startTime = System.currentTimeMillis();
-    int rank2=rankBinarySearch(key, whitelist);
+    int rank2 = rankBinarySearch(key, whitelist);
     System.out.println("Binary search retrun rank: " + rank2);
     endTime = System.currentTimeMillis();
     System.out.println("Binary search time: " + (endTime - startTime));

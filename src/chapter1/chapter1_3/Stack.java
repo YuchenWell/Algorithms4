@@ -3,7 +3,9 @@ package chapter1.chapter1_3;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
-public class Stack<Item> {
+import java.util.Iterator;
+
+public class Stack<Item> implements Iterable<Item> {
   private Item[] a = (Item[]) new Object[1];
   private int N = 0;
 
@@ -36,6 +38,28 @@ public class Stack<Item> {
     return item;
   }
 
+  public Iterator<Item> iterator() {
+    return new ReverseArrayIterator();
+  }
+
+  private class ReverseArrayIterator implements Iterator<Item> {
+    private int i = N;
+
+    @Override
+    public boolean hasNext() {
+      return i > 0;
+    }
+
+    @Override
+    public Item next() {
+      return a[--i];
+    }
+
+    @Override
+    public void remove() {
+
+    }
+  }
 
   public static void main(String[] args) {
     Stack<String> s = new Stack<String>();

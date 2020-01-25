@@ -5,7 +5,7 @@ import java.util.Iterator;
 public class Queue<Item> implements Iterable<Item> {
   private Node first;
   private Node last;
-  private int N;
+  private int N = 0;
 
   private class Node {
     Item item;
@@ -48,11 +48,11 @@ public class Queue<Item> implements Iterable<Item> {
     return new ListIterator();
   }
 
-  public class ListIterator implements Iterator<Item> {
+  private class ListIterator implements Iterator<Item> {
     public Node current = first;
 
     public boolean hasNext() {
-      return N != 0;
+      return current != null;
     }
 
     public void remove() {

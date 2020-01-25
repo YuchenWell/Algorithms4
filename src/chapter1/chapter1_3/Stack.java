@@ -7,6 +7,14 @@ public class Stack<Item> implements Iterable<Item> {
   private Node first;
   private int N = 0;
 
+  public boolean isEmpty() {
+    return N == 0;
+  }
+
+  public int size() {
+    return N;
+  }
+
   private class Node {
     Item item;
     Node next;
@@ -43,7 +51,7 @@ public class Stack<Item> implements Iterable<Item> {
 
     public Item next() {
       Item item = current.item;
-      current = first.next;
+      current = current.next;
       return item;
     }
 

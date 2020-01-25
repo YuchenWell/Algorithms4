@@ -6,7 +6,7 @@ public class Parentheses {
     String test1 = "[()]{}{[()()]()}";
     String test2 = "[(])";
 
-    String s = test2;
+    String s = "[(])";
     String[] inputs = s.split("");
 
     for (String input : inputs) {

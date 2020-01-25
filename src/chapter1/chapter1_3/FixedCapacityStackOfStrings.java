@@ -48,9 +48,7 @@ public class FixedCapacityStackOfStrings {
       }
       StdOut.println("(" + s.size() + " left on stack)");
     }
-
   }
-
 }
 
 

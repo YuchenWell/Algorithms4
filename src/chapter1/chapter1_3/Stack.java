@@ -1,7 +1,7 @@
 package chapter1.chapter1_3;
 
 import java.util.Iterator;
-
+import java.util.NoSuchElementException;
 
 public class Stack<Item> implements Iterable<Item> {
   private Node first;
@@ -26,6 +26,17 @@ public class Stack<Item> implements Iterable<Item> {
     first.item = item;
     first.next = oldFirst;
     N++;
+  }
+
+  /**
+   * Ex1.3.7
+   */
+  public Item peek() {
+    if (isEmpty()) {
+      throw new NoSuchElementException("Stack underflow");
+    }
+
+    return first.item;
   }
 
   public Item pop() {

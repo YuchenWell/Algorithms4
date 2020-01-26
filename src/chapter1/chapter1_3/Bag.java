@@ -4,6 +4,15 @@ import java.util.Iterator;
 
 public class Bag<Item> implements Iterable<Item> {
   private Node first;
+  private int N = 0;
+
+  public int size() {
+    return N;
+  }
+
+  public boolean isEmpty() {
+    return N == 0;
+  }
 
   private class Node {
     Item item;
@@ -15,7 +24,9 @@ public class Bag<Item> implements Iterable<Item> {
     first = new Node();
     first.item = item;
     first.next = oldFirst;
+    N++;
   }
+
 
   public Iterator<Item> iterator() {
     return new ListIterator();

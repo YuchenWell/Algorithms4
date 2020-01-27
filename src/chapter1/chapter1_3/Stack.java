@@ -29,7 +29,7 @@ public class Stack<Item> implements Iterable<Item> {
   }
 
   /**
-   * Ex1.3.7
+   * Ex1.3.7 返回最近添加的元素，而不弹出它。
    */
   public Item peek() {
     if (isEmpty()) {
@@ -37,6 +37,21 @@ public class Stack<Item> implements Iterable<Item> {
     }
 
     return first.item;
+  }
+
+  /**
+   * Ex1.3.20 删除链表的第K个元素。
+   */
+  public Item delete(int k) {
+    if (k > N) return null;
+
+    Node current = first;
+    for (int i = 1; i < N - 1; i++) {
+      current = current.next;
+    }
+    Item item = current.next.item;
+    current.next = current.next.next;
+    return item;
   }
 
   public Item pop() {

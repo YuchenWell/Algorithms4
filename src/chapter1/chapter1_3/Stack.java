@@ -1,5 +1,7 @@
 package chapter1.chapter1_3;
 
+import edu.princeton.cs.algs4.StdOut;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -61,6 +63,22 @@ public class Stack<Item> implements Iterable<Item> {
     return item;
   }
 
+
+  /**
+   * Ex1.3.30 反转链表（迭代方式）。
+   */
+  public void reverse() {
+    Node oldFirst = first;
+    Node reverse = null;
+    while (oldFirst != null) {
+      Node secord = oldFirst.next;
+      oldFirst.next = reverse;
+      reverse = oldFirst;
+      oldFirst = secord;
+    }
+    first = reverse;
+  }
+
   public Iterator<Item> iterator() {
     return new ListIterator();
   }
@@ -80,6 +98,23 @@ public class Stack<Item> implements Iterable<Item> {
       current = current.next;
       return item;
     }
+  }
 
+  public static void main(String[] args) {
+    Stack<String> stack = new Stack<String>();
+    stack.push("A");
+    stack.push("B");
+    stack.push("C");
+    stack.push("D");
+
+    for (String s : stack) {
+      StdOut.print(s);
+    }
+
+    stack.reverse();
+    StdOut.println();
+    for (String s : stack) {
+      StdOut.print(s);
+    }
   }
 }

@@ -71,10 +71,10 @@ public class Stack<Item> implements Iterable<Item> {
     Node oldFirst = first;
     Node reverse = null;
     while (oldFirst != null) {
-      Node secord = oldFirst.next;
+      Node second = oldFirst.next;
       oldFirst.next = reverse;
       reverse = oldFirst;
-      oldFirst = secord;
+      oldFirst = second;
     }
     first = reverse;
   }

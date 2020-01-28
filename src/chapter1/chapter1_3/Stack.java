@@ -79,6 +79,24 @@ public class Stack<Item> implements Iterable<Item> {
     first = reverse;
   }
 
+  /**
+   * Ex1.3.30 反转链表（递归方式）。
+   */
+  public Node reverse(Node first) {
+    if (first == null) return null;
+    if (first.next == null) return first;
+
+    Node second = first.next;
+    Node rest = reverse(second);
+    second.next = first;
+    first.next = null;
+    return rest;
+  }
+
+  public void reverse2() {
+    first = reverse(first);
+  }
+
   public Iterator<Item> iterator() {
     return new ListIterator();
   }
@@ -111,7 +129,7 @@ public class Stack<Item> implements Iterable<Item> {
       StdOut.print(s);
     }
 
-    stack.reverse();
+    stack.reverse2();
     StdOut.println();
     for (String s : stack) {
       StdOut.print(s);

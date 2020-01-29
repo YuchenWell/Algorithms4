@@ -5,6 +5,12 @@ import edu.princeton.cs.algs4.StdRandom;
 
 import java.util.Iterator;
 
+/*************************************************************************
+ *  Exercise 1.3.34
+ *  随机背包
+ *  Fisher–Yates shuffle 洗牌算法
+ *************************************************************************/
+
 public class RandomBag<Item> implements Iterable<Item> {
   private Item[] bag = (Item[]) new Object[1];
   private int N = 0;

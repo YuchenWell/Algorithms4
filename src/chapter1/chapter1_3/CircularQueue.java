@@ -4,9 +4,12 @@ import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Iterator;
 
-/**
- * Ex 1.3.29 环形链表实现Queue
- */
+
+/*************************************************************************
+ *  Exercise 1.3.29
+ *  环形链表实现Queue
+ *************************************************************************/
+
 public class CircularQueue<Item> implements Iterable<Item> {
   Node first;
   Node last;

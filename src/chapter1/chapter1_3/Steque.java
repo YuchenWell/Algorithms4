@@ -2,6 +2,10 @@ package chapter1.chapter1_3;
 
 import java.util.Iterator;
 
+/*************************************************************************
+ *  Exercise 1.3.32
+ *  以栈为目标的队列
+ *************************************************************************/
 
 public class Steque<Item> implements Iterable<Item> {
   private Node first;

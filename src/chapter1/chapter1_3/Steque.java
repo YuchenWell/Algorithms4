@@ -2,6 +2,7 @@ package chapter1.chapter1_3;
 
 import java.util.Iterator;
 
+
 public class Steque<Item> implements Iterable<Item> {
   private Node first;
   private Node last;

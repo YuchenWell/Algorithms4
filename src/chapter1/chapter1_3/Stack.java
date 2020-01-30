@@ -9,6 +9,7 @@ public class Stack<Item> implements Iterable<Item> {
   private Node first;
   private int N = 0;
 
+
   public boolean isEmpty() {
     return N == 0;
   }
@@ -20,6 +21,32 @@ public class Stack<Item> implements Iterable<Item> {
   private class Node {
     Item item;
     Node next;
+
+    Node() {
+    }
+
+    Node(Node x) {
+      item = x.item;
+      if (x.next != null) {
+        next = new Node(x.next);
+      }
+      N++;
+    }
+
+
+  }
+
+  public Stack() {
+    first = null;
+    N = 0;
+  }
+
+  /**
+   * Ex 1.3.41
+   * 复制栈
+   */
+  public Stack(Stack<Item> s) {
+    first = new Node(s.first);
   }
 
   public void push(Item item) {

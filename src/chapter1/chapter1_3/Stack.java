@@ -2,12 +2,14 @@ package chapter1.chapter1_3;
 
 import edu.princeton.cs.algs4.StdOut;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class Stack<Item> implements Iterable<Item> {
   private Node first;
   private int N = 0;
+  private int operates = 0; // Ex 1.3.50 快速出错的迭代器
 
 
   public boolean isEmpty() {
@@ -58,6 +60,7 @@ public class Stack<Item> implements Iterable<Item> {
     first = new Node();
     first.item = item;
     first.next = oldFirst;
+    operates++;
     N++;
   }
 
@@ -84,6 +87,8 @@ public class Stack<Item> implements Iterable<Item> {
     }
     Item item = current.next.item;
     current.next = current.next.next;
+    N--;
+    operates++;
     return item;
   }
 
@@ -91,6 +96,7 @@ public class Stack<Item> implements Iterable<Item> {
     Item item = first.item;
     first = first.next;
     N--;
+    operates++;
     return item;
   }
 
@@ -134,8 +140,12 @@ public class Stack<Item> implements Iterable<Item> {
 
   private class ListIterator implements Iterator<Item> {
     private Node current = first;
+    private int count = operates; // Ex 1.3.50 快速出错的迭代器
 
     public boolean hasNext() {
+      // Ex 1.3.50 快速出错的迭代器
+      if (count != operates) throw new ConcurrentModificationException();
+
       return current != null;
     }
 
@@ -143,6 +153,9 @@ public class Stack<Item> implements Iterable<Item> {
     }
 
     public Item next() {
+      // Ex 1.3.50 快速出错的迭代器
+      if (count != operates) throw new ConcurrentModificationException();
+
       Item item = current.item;
       current = current.next;
       return item;

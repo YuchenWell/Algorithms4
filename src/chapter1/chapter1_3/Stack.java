@@ -25,6 +25,10 @@ public class Stack<Item> implements Iterable<Item> {
     Node() {
     }
 
+    /**
+     * Ex 1.3.42
+     * 复制栈
+     */
     Node(Node x) {
       item = x.item;
       if (x.next != null) {
@@ -42,7 +46,7 @@ public class Stack<Item> implements Iterable<Item> {
   }
 
   /**
-   * Ex 1.3.41
+   * Ex 1.3.42
    * 复制栈
    */
   public Stack(Stack<Item> s) {

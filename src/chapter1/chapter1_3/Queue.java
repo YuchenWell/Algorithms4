@@ -10,6 +10,23 @@ public class Queue<Item> implements Iterable<Item> {
   private class Node {
     Item item;
     Node next;
+
+    Node() {
+    }
+
+    /**
+     * Ex 1.3.41
+     * 复制队列
+     */
+    Node(Node x) {
+      item = x.item;
+      if (x.next != null) {
+        next = new Node(x.next);
+      } else {
+        last = x;
+      }
+      N++;
+    }
   }
 
   public boolean isEmpty() {
@@ -18,6 +35,21 @@ public class Queue<Item> implements Iterable<Item> {
 
   public int size() {
     return N;
+  }
+
+
+  public Queue() {
+    first = null;
+    last = null;
+    N = 0;
+  }
+
+  /**
+   * Ex 1.3.41
+   * 复制队列
+   */
+  public Queue(Queue<Item> q) {
+    first = new Node(q.first);
   }
 
   public void enqueue(Item item) {

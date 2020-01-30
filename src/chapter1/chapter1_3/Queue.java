@@ -1,5 +1,7 @@
 package chapter1.chapter1_3;
 
+import edu.princeton.cs.algs4.StdOut;
+
 import java.util.Iterator;
 
 public class Queue<Item> implements Iterable<Item> {
@@ -76,6 +78,21 @@ public class Queue<Item> implements Iterable<Item> {
     return item;
   }
 
+  /**
+   * Ex1.3.47
+   * 可连接的队列
+   * 先弹出的是 原来队列中的数据（因为输入的队列是后进的）。
+   * 队列： 先进先出
+   */
+  public void cartenation(Queue<Item> queue) {
+    if (queue.first == null) return;
+
+    Queue<Item> temp = new Queue<Item>(queue);
+    last.next = temp.first;
+    last = temp.last;
+  }
+
+
   public Iterator<Item> iterator() {
     return new ListIterator();
   }
@@ -95,6 +112,45 @@ public class Queue<Item> implements Iterable<Item> {
       Item item = current.item;
       current = current.next;
       return item;
+    }
+  }
+
+  public static void main(String[] args) {
+    Queue<String> queue1 = new Queue<String>();
+    queue1.enqueue("A");
+    queue1.enqueue("B");
+    queue1.enqueue("C");
+
+
+    Queue<String> queue2 = new Queue<String>();
+    queue2.enqueue("X");
+    queue2.enqueue("Y");
+    queue2.enqueue("Z");
+
+
+    StdOut.print("Queue 1: ");
+    for (String string : queue1) {
+      StdOut.print(string);
+    }
+
+    StdOut.println();
+    StdOut.print("Queue 2: ");
+    for (String string : queue2) {
+      StdOut.print(string);
+    }
+
+    queue1.cartenation(queue2);
+
+    StdOut.println();
+    StdOut.print("Queue 1: ");
+    for (String string : queue1) {
+      StdOut.print(string);
+    }
+
+    StdOut.println();
+    StdOut.print("Queue 2: ");
+    for (String string : queue2) {
+      StdOut.print(string);
     }
   }
 }

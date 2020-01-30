@@ -38,8 +38,6 @@ public class Stack<Item> implements Iterable<Item> {
       }
       N++;
     }
-
-
   }
 
   public Stack() {
@@ -134,6 +132,24 @@ public class Stack<Item> implements Iterable<Item> {
     first = reverse(first);
   }
 
+  /**
+   * Ex1.3.47
+   * 可连接的栈
+   * 先弹出的是 输入的栈中的数据（因为输入的栈是后进的）。
+   * 栈： 后进先出
+   */
+  public void cartenation(Stack<Item> stack) {
+    if (stack.first == null) return;
+
+    Stack<Item> temp = new Stack<Item>(stack);
+    Node last = temp.first;
+    while (last.next != null) {
+      last = last.next;
+    }
+    last.next = first;
+    first = temp.first;
+  }
+
   public Iterator<Item> iterator() {
     return new ListIterator();
   }
@@ -163,20 +179,41 @@ public class Stack<Item> implements Iterable<Item> {
   }
 
   public static void main(String[] args) {
-    Stack<String> stack = new Stack<String>();
-    stack.push("A");
-    stack.push("B");
-    stack.push("C");
-    stack.push("D");
+    Stack<String> stack1 = new Stack<String>();
+    stack1.push("A");
+    stack1.push("B");
+    stack1.push("C");
 
-    for (String s : stack) {
-      StdOut.print(s);
+
+    Stack<String> stack2 = new Stack<String>();
+    stack2.push("X");
+    stack2.push("Y");
+    stack2.push("Z");
+
+
+    StdOut.print("Stack 1: ");
+    for (String string : stack1) {
+      StdOut.print(string);
     }
 
-    stack.reverse2();
     StdOut.println();
-    for (String s : stack) {
-      StdOut.print(s);
+    StdOut.print("Stack 2: ");
+    for (String string : stack2) {
+      StdOut.print(string);
+    }
+
+    stack1.cartenation(stack2);
+
+    StdOut.println();
+    StdOut.print("Stack 1: ");
+    for (String string : stack1) {
+      StdOut.print(string);
+    }
+
+    StdOut.println();
+    StdOut.print("Stack 2: ");
+    for (String string : stack2) {
+      StdOut.print(string);
     }
   }
 }

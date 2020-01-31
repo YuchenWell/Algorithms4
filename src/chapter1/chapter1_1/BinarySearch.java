@@ -14,7 +14,7 @@ public class BinarySearch {
   private BinarySearch() {
   }
 
-  private static int indexOf(int[] a, int key) {
+  public static int indexOf(int[] a, int key) {
     int lo = 0;
     int hi = a.length - 1;
     while (lo <= hi) {

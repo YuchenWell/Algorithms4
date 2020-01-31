@@ -11,13 +11,11 @@ public class StopWatch {
   public String name;
 
   public StopWatch() {
-    StdOut.println("Start timer");
     start = System.currentTimeMillis();
   }
 
   public StopWatch(String name) {
     name = name;
-    StdOut.println("Start timer: " + name);
     start = System.currentTimeMillis();
   }
 

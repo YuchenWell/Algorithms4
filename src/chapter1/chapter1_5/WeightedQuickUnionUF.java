@@ -9,7 +9,7 @@ public class WeightedQuickUnionUF {
   private int[] sz; // 由触点索引的 各个根节点 对应的分量的大小
   private int count; // 连通分量的数量
 
-  private WeightedQuickUnionUF(int N) {
+  public WeightedQuickUnionUF(int N) {
     count = N;
     sz = new int[N];
     id = new int[N];

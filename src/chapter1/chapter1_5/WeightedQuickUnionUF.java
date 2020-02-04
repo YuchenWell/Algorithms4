@@ -28,19 +28,18 @@ public class WeightedQuickUnionUF {
   }
 
   public int find(int p) {
-    int[] ids = new int[id.length];
-    int n = 0;
+    int root = p;
+    while (id[root] != root) {
+      root = id[root];
+    }
 
-    while (id[p] != p) {
-      ids[n++] = p;
+    while (id[p] != root) {
+      int temp = p;
       p = id[p];
+      id[temp] = root;
     }
 
-    for (int i = 0; i <= n; i++) {
-      ids[i] = p;
-    }
-
-    return p;
+    return root;
   }
 
   public void union(int p, int q) {

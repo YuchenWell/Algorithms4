@@ -8,7 +8,8 @@ public class Insertion {
     int N = a.length;
     for (int i = 1; i < N; i++) {
       for (int j = i; j > 0; j--) {
-        if (less(a[j], a[j - 1])) exch(a, j, j - 1);
+        if (less(a[j - 1], a[j])) break;
+        exch(a, j, j - 1);
       }
     }
   }

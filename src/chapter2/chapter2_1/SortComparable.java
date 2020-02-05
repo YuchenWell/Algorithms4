@@ -12,12 +12,14 @@ public class SortComparable {
         Selection.sort(a);
       case "Insertion":
         Insertion.sort(a);
+      case "Shell":
+        Shell.sort(a);
     }
     return timer.elapsedTime();
   }
 
   public static double timeRandomInput(String alg, int N, int T) {
-    //使用算法algT个长度为N的数组排序
+    //使用算法alg将T个长度为N的数组排序
     double total = 0.0;
     Double[] a = new Double[N];
     for (int t = 0; t < T; t++) {
@@ -30,16 +32,25 @@ public class SortComparable {
   }
 
   public static void main(String[] args) {
-    String alg1 = "Insertion";
-    String alg2 = "Selection";
-    int N = 5000; // 数组长度
-    int T = 10; // 测试数量
+    String alg1 = "Selection";
+    String alg2 = "Insertion";
+    String alg3 = "Shell";
+
+    int N = 2000; // 数组长度
+    int T = 100; // 测试数量
+
+    StdOut.printf("For %d random Doubles:\n", N, alg1);
 
     double t1 = timeRandomInput(alg1, N, T);
-    double t2 = timeRandomInput(alg2, N, T);
+    StdOut.printf("%s used  %.2f seconds \n", alg1, t1);
 
-    StdOut.printf("For %d random Doubles\n %s is ", N, alg1);
-    StdOut.printf("%.2f times faster than %s\n", t2 / t1, alg2);
+    double t2 = timeRandomInput(alg2, N, T);
+    StdOut.printf("%s used  %.2f seconds \n", alg2, t2);
+
+    double t3 = timeRandomInput(alg3, N, T);
+    StdOut.printf("%s used  %.2f seconds \n", alg3, t3);
+
+
   }
 
 }

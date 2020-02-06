@@ -2,6 +2,11 @@ package chapter2.chapter2_1;
 
 import java.util.Arrays;
 
+
+/**
+ * Exercise 2.1.21
+ */
+
 public class Transaction implements Comparable<Transaction> {
   private String customer; // customer
   private Date date; // date
@@ -12,6 +17,17 @@ public class Transaction implements Comparable<Transaction> {
     this.date = date;
     this.amount = amount;
   }
+
+  /**
+   * Exercise 1.2.19
+   */
+  public Transaction(String transaction) {
+    String[] fields = transaction.split("\\s+");
+    customer = fields[0];
+    date = new Date(fields[1]);
+    amount = Double.parseDouble(fields[2]);
+  }
+
 
   public String getCustomer() {
     return customer;

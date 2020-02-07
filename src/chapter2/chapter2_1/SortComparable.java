@@ -14,6 +14,8 @@ public class SortComparable {
         Insertion.sort(a);
       case "Shell":
         Shell.sort(a);
+      case "Ex24":
+        Ex24.sort(a);
     }
     return timer.elapsedTime();
   }
@@ -35,8 +37,9 @@ public class SortComparable {
     String alg1 = "Selection";
     String alg2 = "Insertion";
     String alg3 = "Shell";
+    String alg4 = "Ex24"; // 规避边界测试的插入排序，大数组下大概能快7%
 
-    int N = 2000; // 数组长度
+    int N = 5000; // 数组长度
     int T = 100; // 测试数量
 
     StdOut.printf("For %d random Doubles:\n", N, alg1);
@@ -50,7 +53,8 @@ public class SortComparable {
     double t3 = timeRandomInput(alg3, N, T);
     StdOut.printf("%s used  %.2f seconds \n", alg3, t3);
 
-
+    double t4 = timeRandomInput(alg4, N, T);
+    StdOut.printf("%s used  %.2f seconds \n", alg4, t4);
   }
 
 }

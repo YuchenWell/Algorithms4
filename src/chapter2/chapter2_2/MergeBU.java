@@ -3,6 +3,11 @@ package chapter2.chapter2_2;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
+/*************************************************************************
+ *  Demo 2.4
+ *  Merge sort
+ *  自底向上的归并排序
+ *************************************************************************/
 public class MergeBU {
   private static Comparable[] aux;
 

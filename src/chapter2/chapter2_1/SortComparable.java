@@ -2,6 +2,7 @@ package chapter2.chapter2_1;
 
 import chapter2.chapter2_2.Merge;
 import chapter2.chapter2_3.Quick;
+import chapter2.chapter2_4.Heap;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.Stopwatch;
@@ -22,6 +23,8 @@ public class SortComparable {
         Merge.sort(a);
       case "Quick":
         Quick.sort(a);
+      case "Heap":
+        Heap.sort(a);
     }
     return timer.elapsedTime();
   }
@@ -45,6 +48,7 @@ public class SortComparable {
     String alg3 = "Shell";
     String alg4 = "Merge";
     String alg5 = "Quick";
+    String alg6 = "Heap";
 
     int N = 5000; // 数组长度
     int T = 100; // 测试数量
@@ -65,5 +69,8 @@ public class SortComparable {
 
     double t5 = timeRandomInput(alg5, N, T);
     StdOut.printf("%s used  %.2f seconds \n", alg5, t5);
+
+    double t6 = timeRandomInput(alg6, N, T);
+    StdOut.printf("%s used  %.2f seconds \n", alg6, t6);
   }
 }

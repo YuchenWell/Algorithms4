@@ -1,5 +1,6 @@
 package chapter3.chpater3_1;
 
+import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.StdOut;
 
 public class SequentialSearchST<Key, Value> {
@@ -68,7 +69,7 @@ public class SequentialSearchST<Key, Value> {
     return i;
   }
 
-  public boolean contain(Key key) {
+  public boolean contains(Key key) {
     for (Node x = first; x != null; x = x.next) {
       if (key.equals(x.key)) {
         return true;
@@ -76,6 +77,14 @@ public class SequentialSearchST<Key, Value> {
     }
 
     return false;
+  }
+
+  public Iterable<Key> keys() {
+    Queue<Key> queue = new Queue<Key>();
+    for (Node x = first; x != null; x = x.next) {
+      queue.enqueue(x.key);
+    }
+    return queue;
   }
 
   private void show() {

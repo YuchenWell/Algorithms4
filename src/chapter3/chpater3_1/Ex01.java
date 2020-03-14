@@ -4,7 +4,9 @@ import edu.princeton.cs.algs4.StdIn;
 
 public class Ex01 {
   public static void main(String[] args) {
+    // 基于链表的顺序查找算法，只适用于小型问题，对于大型问题很慢。
     SequentialSearchST<String, Double> st = new SequentialSearchST<>();
+
     st.put("A+", 4.33);
     st.put("A", 4.00);
     st.put("A-", 3.67);

@@ -1,5 +1,8 @@
 package chapter3.chpater3_2;
 
+import edu.princeton.cs.algs4.Queue;
+import edu.princeton.cs.algs4.StdOut;
+
 public class BST<Key extends Comparable<Key>, Value> {
   private Node root;
 
@@ -69,11 +72,11 @@ public class BST<Key extends Comparable<Key>, Value> {
    * 3.2.3.1 最小值
    **/
   public Key min() {
-    return min(root);
+    return min(root).key;
   }
 
-  private Key min(Node x) {
-    if (x.left == null) return x.key;
+  private Node min(Node x) {
+    if (x.left == null) return x;
     return min(x.left);
   }
 
@@ -82,11 +85,11 @@ public class BST<Key extends Comparable<Key>, Value> {
    * 3.2.3.1 最大值
    **/
   public Key max() {
-    return max(root);
+    return max(root).key;
   }
 
-  private Key max(Node x) {
-    if (x.right == null) return x.key;
+  private Node max(Node x) {
+    if (x.right == null) return x;
     return max(x.right);
   }
 
@@ -180,5 +183,100 @@ public class BST<Key extends Comparable<Key>, Value> {
     } else {
       return size(x.left);
     }
+  }
+
+  /**
+   * 有序性的相关方法
+   * 3.2.3.5 删除最小值
+   **/
+  public void deleteMin() {
+    root = deleteMin(root);
+  }
+
+  private Node deleteMin(Node x) {
+    if (x.left == null) return x.right;
+    x.left = deleteMin(x.left);
+    x.N = size(x.left) + size(x.right) + 1;
+    return x;
+  }
+
+  /**
+   * 有序性的相关方法
+   * 3.2.3.5 删除最大值
+   **/
+  public void deleteMax() {
+    root = deleteMax(root);
+  }
+
+  private Node deleteMax(Node x) {
+    if (x.right == null) return x.left;
+    x.right = deleteMax(x.right);
+    x.N = size(x.left) + size(x.right) + 1;
+    return x;
+  }
+
+  /**
+   * 有序性的相关方法
+   * 3.2.3.6 ** 删除操作 **
+   **/
+  public void delete(Key key) {
+    root = delete(root, key);
+  }
+
+  private Node delete(Node x, Key key) {
+    if (x == null) return null;
+    int cmp = key.compareTo(x.key);
+    if (cmp < 0) {
+      return delete(x.left, key);
+    } else if (cmp > 0) {
+      return delete(x.right, key);
+    } else {
+      if (x.right == null) return x.left;
+      if (x.left == null) return x.right;
+
+      Node t = x;
+      x = min(t.right);
+      x.right = deleteMin(t.right);
+      x.left = t.left;
+    }
+
+    x.N = size(x.left) + size(x.right) + 1;
+    return x;
+  }
+
+  /**
+   * 有序性的相关方法
+   * 3.2.3.7 按顺序打印二叉树中的所有键
+   **/
+  public void print(Node x) {
+    if (x == null) return;
+    print(x.left);
+    StdOut.println(x.key);
+    print(x.right);
+  }
+
+  /**
+   * 有序性的相关方法
+   * 3.2.3.7 中序遍历
+   **/
+  public Iterable<Key> keys() {
+    return keys(min(), max());
+  }
+
+  public Iterable<Key> keys(Key min, Key max) {
+    Queue<Key> queue = new Queue<Key>();
+    keys(root, queue, min, max);
+    return queue;
+  }
+
+  public void keys(Node x, Queue<Key> queue, Key min, Key max) {
+    if (x == null) return;
+
+    int cmpMin = min.compareTo(x.key);
+    int cmpMax = max.compareTo(x.key);
+
+    if (cmpMin < 0) keys(x.left, queue, min, max);
+    if (cmpMin <= 0 && cmpMax >= 0) queue.enqueue(x.key);
+    if (cmpMax > 0) keys(x.right, queue, min, max);
   }
 }
